@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://57brcq3cu73k"]
+
+[ext_resource type="Script" path="res://scenes/characters/crate.gd" id="1_alhsq"]
+[ext_resource type="Texture2D" uid="uid://c8dvm7fkv82yo" path="res://assets/graphics/sokoban_sprite.png" id="1_i4oju"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_catlg"]
+friction = 0.26
+bounce = 0.52
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pehp"]
+size = Vector2(62, 64)
+
+[node name="Crate" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_catlg")
+gravity_scale = 0.0
+linear_damp = 1.0
+script = ExtResource("1_alhsq")
+
+[node name="DefaultCrate" type="Sprite2D" parent="."]
+texture = ExtResource("1_i4oju")
+region_enabled = true
+region_rect = Rect2(192, 256, 64, 64)
+
+[node name="CorrectCrate" type="Sprite2D" parent="."]
+texture = ExtResource("1_i4oju")
+region_enabled = true
+region_rect = Rect2(256, 256, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7pehp")
