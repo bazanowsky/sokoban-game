@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 300.0
+@export var MOVEMENT_DURATION = 0.2
 
 var moving = false
 var movement_distance = 64;
@@ -17,7 +17,7 @@ func move(direction):
 	
 	if not moving and direction:
 		var position_tween = create_tween();
-		position_tween.tween_property(self, 'position', position + (direction * movement_distance), 0.6)
+		position_tween.tween_property(self, 'position', position + (direction * movement_distance), MOVEMENT_DURATION)
 		moving = true;
 		await position_tween.finished
 		moving = false
