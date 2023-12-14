@@ -10,10 +10,10 @@ bounce = 0.52
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pehp"]
 size = Vector2(62, 64)
 
-[node name="Crate" type="RigidBody2D"]
+[node name="Crate" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 31
 physics_material_override = SubResource("PhysicsMaterial_catlg")
-gravity_scale = 0.0
-linear_damp = 1.0
 script = ExtResource("1_alhsq")
 
 [node name="DefaultCrate" type="Sprite2D" parent="."]
@@ -28,3 +28,24 @@ region_rect = Rect2(256, 256, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7pehp")
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -64)
+collision_mask = 27
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(64, 0)
+collision_mask = 27
+hit_from_inside = true
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+collision_mask = 27
+hit_from_inside = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-64, 0)
+collision_mask = 27
+hit_from_inside = true
