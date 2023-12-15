@@ -66,7 +66,6 @@ func _process(_delta):
 	var direction: Vector2
 	var h_direction = 0
 	var v_direction = 0
-	var move_direction = null
 	# don't move if left and right are pressed at the same time (h_direction will be set to 0)
 	h_direction = int(Input.is_action_pressed('move_right')) - int(Input.is_action_pressed('move_left'))
 	# don't move if up and down are pressed at the same time (v_direction will be set to 0)
@@ -85,7 +84,7 @@ func _process(_delta):
 
 	if move_collider is Crate:
 		var crate = move_collider;
-		if crate.can_move:
+		if crate.can_move and not crate.moving:
 			crate.move(direction);
 			move(direction);
 	elif not move_collider:
